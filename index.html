@@ -1,0 +1,432 @@
+<!-- Created by PhpStorm.-->
+<!-- User: Дмитрий-->
+<!-- Date: 22.01.2016-->
+<!-- Time: 23:24-->
+<html>
+<head>
+    <title>Морской бой</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquey.title.source.js"></script>
+    <script type="text/javascript" src="js/battleship.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="center">
+        <div class="body field">
+            <div class="body status">
+                <a class="nav" href="/" target="parent" title="Главная">
+                    <img id="logo" src="./ico.png" alt="Логотип">
+                </a>
+                <span>Расположите корабли</span>
+            </div>
+            <div class="my-field">
+                <div class="coord horizontal">
+                    <i>А</i>
+                    <i>Б</i>
+                    <i>В</i>
+                    <i>Г</i>
+                    <i>Д</i>
+                    <i>Е</i>
+                    <i>Ж</i>
+                    <i>З</i>
+                    <i>И</i>
+                    <i>К</i>
+                </div>
+                <div class="coord vertical">
+                    <i>1</i>
+                    <i>2</i>
+                    <i>3</i>
+                    <i>4</i>
+                    <i>5</i>
+                    <i>6</i>
+                    <i>7</i>
+                    <i>8</i>
+                    <i>9</i>
+                    <i>10</i>
+                </div>
+                <div class="canvas off">
+                    <i class="itm" x="0" y="0"></i>
+                    <i class="itm" x="0" y="1"></i>
+                    <i class="itm" x="0" y="2"></i>
+                    <i class="itm" x="0" y="3"></i>
+                    <i class="itm" x="0" y="4"></i>
+                    <i class="itm" x="0" y="5"></i>
+                    <i class="itm" x="0" y="6"></i>
+                    <i class="itm" x="0" y="7"></i>
+                    <i class="itm" x="0" y="8"></i>
+                    <i class="itm" x="0" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="1" y="0"></i>
+                    <i class="itm" x="1" y="1"></i>
+                    <i class="itm" x="1" y="2"></i>
+                    <i class="itm" x="1" y="3"></i>
+                    <i class="itm" x="1" y="4"></i>
+                    <i class="itm" x="1" y="5"></i>
+                    <i class="itm" x="1" y="6"></i>
+                    <i class="itm" x="1" y="7"></i>
+                    <i class="itm" x="1" y="8"></i>
+                    <i class="itm" x="1" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="2" y="0"></i>
+                    <i class="itm" x="2" y="1"></i>
+                    <i class="itm" x="2" y="2"></i>
+                    <i class="itm" x="2" y="3"></i>
+                    <i class="itm" x="2" y="4"></i>
+                    <i class="itm" x="2" y="5"></i>
+                    <i class="itm" x="2" y="6"></i>
+                    <i class="itm" x="2" y="7"></i>
+                    <i class="itm" x="2" y="8"></i>
+                    <i class="itm" x="2" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="3" y="0"></i>
+                    <i class="itm" x="3" y="1"></i>
+                    <i class="itm" x="3" y="2"></i>
+                    <i class="itm" x="3" y="3"></i>
+                    <i class="itm" x="3" y="4"></i>
+                    <i class="itm" x="3" y="5"></i>
+                    <i class="itm" x="3" y="6"></i>
+                    <i class="itm" x="3" y="7"></i>
+                    <i class="itm" x="3" y="8"></i>
+                    <i class="itm" x="3" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="4" y="0"></i>
+                    <i class="itm" x="4" y="1"></i>
+                    <i class="itm" x="4" y="2"></i>
+                    <i class="itm" x="4" y="3"></i>
+                    <i class="itm" x="4" y="4"></i>
+                    <i class="itm" x="4" y="5"></i>
+                    <i class="itm" x="4" y="6"></i>
+                    <i class="itm" x="4" y="7"></i>
+                    <i class="itm" x="4" y="8"></i>
+                    <i class="itm" x="4" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="5" y="0"></i>
+                    <i class="itm" x="5" y="1"></i>
+                    <i class="itm" x="5" y="2"></i>
+                    <i class="itm" x="5" y="3"></i>
+                    <i class="itm" x="5" y="4"></i>
+                    <i class="itm" x="5" y="5"></i>
+                    <i class="itm" x="5" y="6"></i>
+                    <i class="itm" x="5" y="7"></i>
+                    <i class="itm" x="5" y="8"></i>
+                    <i class="itm" x="5" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="6" y="0"></i>
+                    <i class="itm" x="6" y="1"></i>
+                    <i class="itm" x="6" y="2"></i>
+                    <i class="itm" x="6" y="3"></i>
+                    <i class="itm" x="6" y="4"></i>
+                    <i class="itm" x="6" y="5"></i>
+                    <i class="itm" x="6" y="6"></i>
+                    <i class="itm" x="6" y="7"></i>
+                    <i class="itm" x="6" y="8"></i>
+                    <i class="itm" x="6" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="7" y="0"></i>
+                    <i class="itm" x="7" y="1"></i>
+                    <i class="itm" x="7" y="2"></i>
+                    <i class="itm" x="7" y="3"></i>
+                    <i class="itm" x="7" y="4"></i>
+                    <i class="itm" x="7" y="5"></i>
+                    <i class="itm" x="7" y="6"></i>
+                    <i class="itm" x="7" y="7"></i>
+                    <i class="itm" x="7" y="8"></i>
+                    <i class="itm" x="7" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="8" y="0"></i>
+                    <i class="itm" x="8" y="1"></i>
+                    <i class="itm" x="8" y="2"></i>
+                    <i class="itm" x="8" y="3"></i>
+                    <i class="itm" x="8" y="4"></i>
+                    <i class="itm" x="8" y="5"></i>
+                    <i class="itm" x="8" y="6"></i>
+                    <i class="itm" x="8" y="7"></i>
+                    <i class="itm" x="8" y="8"></i>
+                    <i class="itm" x="8" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="9" y="0"></i>
+                    <i class="itm" x="9" y="1"></i>
+                    <i class="itm" x="9" y="2"></i>
+                    <i class="itm" x="9" y="3"></i>
+                    <i class="itm" x="9" y="4"></i>
+                    <i class="itm" x="9" y="5"></i>
+                    <i class="itm" x="9" y="6"></i>
+                    <i class="itm" x="9" y="7"></i>
+                    <i class="itm" x="9" y="8"></i>
+                    <i class="itm" x="9" y="9"></i>
+                </div>
+                <div class="hidentext">ваше поле</div>
+            </div>
+            <div class="repeat fa fa-repeat" title="Попробовать еще"></div>
+            <div class="right">
+                <div class="ship-list">
+                    <div class="title">Перетащите корабль в поле <span>*для поворота кликните мышью на установленном в поле корабле</span>
+                    </div>
+                    <div class="list">
+                        <div class="line" ship="a">
+                            <div class="clone">
+                                <div class="a" ship="a0" pos="h"></div>
+                                <div class="a" ship="a1" pos="h"></div>
+                                <div class="a" ship="a2" pos="h"></div>
+                                <div class="a" ship="a3" pos="h"></div>
+                            </div>
+                            <div class="num">X<span class="x">0</span></div>
+                            <div class="random" title="Расположить корабли случайным образом"><i
+                                    class="fa fa-random"></i></div>
+                        </div>
+                        <div class="line" ship="b">
+                            <div class="clone">
+                                <div class="b" ship="b0" pos="h"></div>
+                                <div class="b" ship="b1" pos="h"></div>
+                                <div class="b" ship="b2" pos="h"></div>
+                            </div>
+                            <div class="num">X<span class="x">0</span></div>
+                        </div>
+                        <div class="line" ship="c">
+                            <div class="clone">
+                                <div class="c" ship="c0" pos="h"></div>
+                                <div class="c" ship="c1" pos="h"></div>
+                            </div>
+                            <div class="num">X<span class="x">0</span></div>
+                        </div>
+                        <div class="line" ship="d">
+                            <div class="clone">
+                                <div class="d" ship="d0" pos="h"></div>
+                            </div>
+                            <div class="num">X<span class="x">0</span></div>
+                        </div>
+                    </div>
+                    <div class="startGame">
+                        <button class="play"><i class="fa fa-play"></i></button>
+                        <div class="level">
+                            <div class="title">Уроверь сложности:</div>
+                            <span data-level="0"><label for="low"><input name="level" type="radio" id="low"/><div>Легко</div></label></span>
+                            <span data-level="1" checked><label for="hard"><input checked name="level" type="radio"
+                                                                                  id="hard"/><div>Сложно</div></label></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <span>Вспомогательная подцветка</span>
+                    <div class="miniform">
+                        <span net="1">
+                            <label for="on"><input type="radio" name="site" id="on"><div>Включена</div></label>
+                        </span>
+                        <span net="0" checked>
+                           <label for="off"><input type="radio" name="site" id="off" checked><div>Выключена</div></label>
+                        </span>
+                    </div>
+                </div>
+                <div class="blocked"></div>
+            </div>
+            <div class="enemy-field">
+                <div class="coord horizontal">
+                    <i>А</i>
+                    <i>Б</i>
+                    <i>В</i>
+                    <i>Г</i>
+                    <i>Д</i>
+                    <i>Е</i>
+                    <i>Ж</i>
+                    <i>З</i>
+                    <i>И</i>
+                    <i>К</i>
+                </div>
+                <div class="coord vertical">
+                    <i>1</i>
+                    <i>2</i>
+                    <i>3</i>
+                    <i>4</i>
+                    <i>5</i>
+                    <i>6</i>
+                    <i>7</i>
+                    <i>8</i>
+                    <i>9</i>
+                    <i>10</i>
+                </div>
+                <div class="canvas">
+                    <i class="itm" x="0" y="0"></i>
+                    <i class="itm" x="0" y="1"></i>
+                    <i class="itm" x="0" y="2"></i>
+                    <i class="itm" x="0" y="3"></i>
+                    <i class="itm" x="0" y="4"></i>
+                    <i class="itm" x="0" y="5"></i>
+                    <i class="itm" x="0" y="6"></i>
+                    <i class="itm" x="0" y="7"></i>
+                    <i class="itm" x="0" y="8"></i>
+                    <i class="itm" x="0" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="1" y="0"></i>
+                    <i class="itm" x="1" y="1"></i>
+                    <i class="itm" x="1" y="2"></i>
+                    <i class="itm" x="1" y="3"></i>
+                    <i class="itm" x="1" y="4"></i>
+                    <i class="itm" x="1" y="5"></i>
+                    <i class="itm" x="1" y="6"></i>
+                    <i class="itm" x="1" y="7"></i>
+                    <i class="itm" x="1" y="8"></i>
+                    <i class="itm" x="1" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="2" y="0"></i>
+                    <i class="itm" x="2" y="1"></i>
+                    <i class="itm" x="2" y="2"></i>
+                    <i class="itm" x="2" y="3"></i>
+                    <i class="itm" x="2" y="4"></i>
+                    <i class="itm" x="2" y="5"></i>
+                    <i class="itm" x="2" y="6"></i>
+                    <i class="itm" x="2" y="7"></i>
+                    <i class="itm" x="2" y="8"></i>
+                    <i class="itm" x="2" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="3" y="0"></i>
+                    <i class="itm" x="3" y="1"></i>
+                    <i class="itm" x="3" y="2"></i>
+                    <i class="itm" x="3" y="3"></i>
+                    <i class="itm" x="3" y="4"></i>
+                    <i class="itm" x="3" y="5"></i>
+                    <i class="itm" x="3" y="6"></i>
+                    <i class="itm" x="3" y="7"></i>
+                    <i class="itm" x="3" y="8"></i>
+                    <i class="itm" x="3" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="4" y="0"></i>
+                    <i class="itm" x="4" y="1"></i>
+                    <i class="itm" x="4" y="2"></i>
+                    <i class="itm" x="4" y="3"></i>
+                    <i class="itm" x="4" y="4"></i>
+                    <i class="itm" x="4" y="5"></i>
+                    <i class="itm" x="4" y="6"></i>
+                    <i class="itm" x="4" y="7"></i>
+                    <i class="itm" x="4" y="8"></i>
+                    <i class="itm" x="4" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="5" y="0"></i>
+                    <i class="itm" x="5" y="1"></i>
+                    <i class="itm" x="5" y="2"></i>
+                    <i class="itm" x="5" y="3"></i>
+                    <i class="itm" x="5" y="4"></i>
+                    <i class="itm" x="5" y="5"></i>
+                    <i class="itm" x="5" y="6"></i>
+                    <i class="itm" x="5" y="7"></i>
+                    <i class="itm" x="5" y="8"></i>
+                    <i class="itm" x="5" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="6" y="0"></i>
+                    <i class="itm" x="6" y="1"></i>
+                    <i class="itm" x="6" y="2"></i>
+                    <i class="itm" x="6" y="3"></i>
+                    <i class="itm" x="6" y="4"></i>
+                    <i class="itm" x="6" y="5"></i>
+                    <i class="itm" x="6" y="6"></i>
+                    <i class="itm" x="6" y="7"></i>
+                    <i class="itm" x="6" y="8"></i>
+                    <i class="itm" x="6" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="7" y="0"></i>
+                    <i class="itm" x="7" y="1"></i>
+                    <i class="itm" x="7" y="2"></i>
+                    <i class="itm" x="7" y="3"></i>
+                    <i class="itm" x="7" y="4"></i>
+                    <i class="itm" x="7" y="5"></i>
+                    <i class="itm" x="7" y="6"></i>
+                    <i class="itm" x="7" y="7"></i>
+                    <i class="itm" x="7" y="8"></i>
+                    <i class="itm" x="7" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="8" y="0"></i>
+                    <i class="itm" x="8" y="1"></i>
+                    <i class="itm" x="8" y="2"></i>
+                    <i class="itm" x="8" y="3"></i>
+                    <i class="itm" x="8" y="4"></i>
+                    <i class="itm" x="8" y="5"></i>
+                    <i class="itm" x="8" y="6"></i>
+                    <i class="itm" x="8" y="7"></i>
+                    <i class="itm" x="8" y="8"></i>
+                    <i class="itm" x="8" y="9"></i>
+                    <!-- -->
+                    <i class="itm" x="9" y="0"></i>
+                    <i class="itm" x="9" y="1"></i>
+                    <i class="itm" x="9" y="2"></i>
+                    <i class="itm" x="9" y="3"></i>
+                    <i class="itm" x="9" y="4"></i>
+                    <i class="itm" x="9" y="5"></i>
+                    <i class="itm" x="9" y="6"></i>
+                    <i class="itm" x="9" y="7"></i>
+                    <i class="itm" x="9" y="8"></i>
+                    <i class="itm" x="9" y="9"></i>
+                </div>
+                <div class="hidentext">поле противника</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(Title());
+    $(document).ready(function () {
+        //Запускаем игру..
+        bs.load();
+        //Дальнейший код..
+        var snap = ".my-field .canvas .itm";
+        $(".line div[pos][ship]").draggable({
+            revert: "invalid",
+            //snap: snap,
+            snapMode: "inner",
+            cursorAt: {top: 15, left: 15}
+
+        });
+        $(snap).droppable({
+            tolerance: "pointer",
+            drop: function (event, ui) {
+                bs.shipDdrop(this, ui);
+            }
+        });
+    });
+    $(document).on("click", ".line div[pos][ship]", function () {
+        bs.shipRotate(this);
+    }); //Событие поворота корабля.
+    $(document).on("click", ".miniform>span:not([checked])", function () {
+        var net = $(this).attr("net");
+        if (net == "1") net = true; else net = false;
+        //Удаляем атребут у всех.
+        $(".miniform>span").removeAttr("checked");
+        $(this).attr("checked", "");
+        if (net) {
+            bs.netDraw();
+        } else {
+            bs.netDraw(true);
+        }
+    });   //Включение выключение дополнительной подцветки на поле.
+    $(document).on("click", ".startGame .play", function () {
+        bs.start();
+    });
+    $(document).on("click", ".line .random", function () {
+        bs.get.field();
+        $("body>.tooltip").hide("slow");
+    });
+    $(document).on("click", ".body.field.game .enemy-field .itm:not(.miss):not(.cut):not(.point)", function () {
+//Ход Игрока.
+        var x = $(this).attr("x"),
+            y = $(this).attr("y");
+        bs.run(x, y, this);
+    }); //Ход игрока.
+    $(document).on("click", ".startGame .level span:not([checked])", function () {
+        var data = $(this).data();
+        if (data.level) {
+            bs.level = true;
+        } else {
+            bs.level = false;
+        }
+        $(".startGame .level span").removeAttr("checked");
+        $(this).attr("checked", "");
+    });
+    $(document).on("click", ".repeat", function () {
+        bs.repeat();
+    });
+</script>
+</body>
+</html>

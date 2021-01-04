@@ -1,0 +1,549 @@
+@color-coord-text: #3F51B5;
+@color-itm: rgb(204, 204, 204);
+@color-ship: #3F51B5;
+@nav_line_solor: rgb(204, 204, 204);
+@ship_bg: #e6e6e6;
+@deg:45deg;
+@font-face {
+  font-family: BattleShip;
+  src: url(fonts/BattleShip_Bold.otf);
+  font-style: oblique;
+}
+@font-face {
+  font-family: BattleShip;
+  src: url(fonts/BattleShip_Regular.otf);
+  font-style: normal;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #878787;
+  border-radius: 50px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+.itm
+  (
+    @w:28px;
+    @border-size: 1px;
+    @z-index: 0;
+    @margin: 0px;
+    @color: @color-itm;
+    @position: relative;
+  )
+  {
+    width: @w;
+    height: @w;
+    border: @border-size solid @color;
+    display: inline-block;
+    float: left;
+    position: @position;
+    z-index: @z-index;
+    margin: @margin;
+  }
+.ship
+  (
+  @width: 30px;
+  @height: 28px;
+  @bg: @ship_bg;
+  )
+  {
+    width: @width;
+    height: @height;
+    float: left;
+    position: relative;
+    margin: -1px;
+    z-index: 1;
+    background: @bg;
+   }
+.clone(){
+  display: block;
+  float: left;
+  margin-right: 10px;
+  border: 1px dashed #CCC;
+}
+.rotate(){
+  -moz-transform: rotate(@deg); /* Для Firefox */
+  -ms-transform: rotate(@deg); /* Для IE */
+  -webkit-transform: rotate(@deg); /* Для Safari, Chrome, iOS */
+  -o-transform: rotate(@deg); /* Для Opera */
+  transform: rotate(@deg);
+}
+.h-ship(@w:30px,@h:28px)
+  {
+  .ship(@w,@h);
+  border-bottom: 2px solid @color-ship;
+  border-top: 2px solid @color-ship;
+  border-left: none;
+  border-right: none;
+  }
+.v-ship(@w:28px,@h:30px){
+  .ship(@w,@h);
+  border-left: 2px solid @color-ship;
+  border-right: 2px solid @color-ship;
+  border-bottom: none;
+  border-top: none;
+}
+.blur(@size:2;){
+  -webkit-filter: blur(@size);
+  filter: blur(@size);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='@size');
+  -webkit-transition: 1s -webkit-filter linear;
+  transition: 1s filter linear;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f3f5;
+  font-family: BattleShip,sans-serif;
+  font-style: oblique;
+  color: #636363;
+  .main {
+    .body{
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(204, 204, 204, 0.75);
+      display: inline-block;
+    }
+    &>.center {
+      width: 736px;
+      display: block;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .body {
+        width: 100%;
+        &.status{
+          height: 45px;
+          line-height: 45px;
+          box-sizing: border-box;
+          padding: 0 44px;
+          text-align: center;
+          font-size: 1.6em;
+          a{
+            text-decoration: none;
+            display: inline-block;
+            margin-left: -37px;
+            margin-top: 2.5px;
+            float: left;
+            img{
+              width: 40px;
+            }
+          }
+        }
+        &.field {
+          height: 400px;
+          .my-field, .enemy-field {
+            width: 332px;
+            height: 332px;
+            margin-top: 8px;
+            margin-left: 7px;
+            float: left;
+            position: relative;
+            .hidentext{
+              display: inline-block;
+              width: 100%;
+              height: 16px;
+              font-size: 0.8em;
+              font-style: normal;
+              text-align: center;
+            }
+            .coord {
+              font-family: Arial,sans-serif;
+              display: inline-block;
+              &.horizontal {
+                margin: 0 1px 0 30px;
+                float: left;
+              }
+              &.vertical {
+                width: 30px;
+                margin: 1px 0;
+                float: left;
+                display: inline-block;
+              }
+              i {
+                font-style: normal;
+                font-size: 1.5em;
+                color: @color-coord-text;
+                width: 30px;
+                display: inline-block;
+                float: left;
+                text-align: center;
+                line-height: 30px;
+              }
+            }
+            .canvas {
+              width: 300px;
+              height: 300px;
+              border: 1px solid @color-itm;
+              display: inline-block;
+              float: left;
+              .itm {
+                .itm;
+                &.point{
+                  &:before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    z-index: -1;
+                    background-color: #CCCCCC;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                    border-radius: 50%;
+                    width: 5px;
+                    height: 5px;
+                  }
+                }
+              }
+              //Выключаем подцветку
+              &.off{
+                .itm{
+                  &.point{
+                    &:before{
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .enemy-field {
+            display: none;
+          }
+          .right{
+            background: #fff;
+            display: inline-block;
+            float: right;
+            width: 380px;
+            height: 354px;
+            .ship-list{
+              height: 300px;
+              .title{
+                font-size: 1em;
+                padding: 10px;
+                text-align: center;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #ccc;
+                box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
+                &>span{
+                  font-size: 0.75em;
+                  display: block;
+                  font-style: normal;
+                }
+              }
+              .list{
+                width: 50%;
+                float: left;
+                .line{
+                  display: block;
+                  padding: 9px 20px;
+                  height: 30px;
+                  &:nth-child(1){
+                    .clone{
+                      .clone();
+                      width: 28px;
+                      height: 28px;
+                    }
+                  }
+                  &:nth-child(2){
+                    .clone{
+                      .clone();
+                      width: 58px;
+                      height: 28px;
+                    }
+                  }
+                  &:nth-child(3){
+                    .clone{
+                      .clone();
+                      width: 88px;
+                      height: 28px;
+                    }
+                  }
+                  &:nth-child(4){
+                    .clone{
+                      .clone();
+                      width: 118px;
+                      height: 28px;
+                    }
+                  }
+                  .a, .b, .c, .d{
+                    display: inline-block;
+                    cursor: move;
+                    background: rgb(230, 230, 230);
+                    .itm(28px,2px,2,-1px,@color-ship,absolute);
+                    &[pos=v]{
+                      width: 28px;
+                    }
+                  }
+                  .b{
+                    width: 58px;
+                    &[pos=v]{
+                      height: 58px;
+                    }
+                  }
+                  .c{
+                    width: 88px;
+                    &[pos=v]{
+                      height: 88px;
+                    }
+                  }
+                  .d{
+                    width: 118px;
+                    &[pos=v]{
+                      height: 118px;
+                    }
+                  }
+                  .num{
+                    display: inline-block;
+                    height: 30px;
+                    line-height: 30px;
+                  }
+                  .random{
+                    display: inline-block;
+                    float: right;
+                    font-size: 19px;
+                    cursor: pointer;
+                    &>i{
+                      height: 30px;
+                      line-height: 30px;
+                    }
+                  }
+                }
+              }
+              &.start{
+                .startGame{
+                  display: block;
+                  box-sizing: border-box;
+                  float: left;
+                  width: 50%;
+                  border-left: 1px solid #ccc;
+                  left: ~"calc((100% - 180px)/2)";
+                  top: ~"calc((100% - 210px)/2)";
+                  .play{
+                    display: block;
+                    width: ~"calc(120px - 18px)";
+                    height: ~"calc(120px - 18px)";
+                    background: none;
+                    border: 6px solid #3f51b5;
+                    border-radius: 50%;
+                    margin: 14px auto;
+                    outline: none;
+                    font-size: 60px;
+                    text-align: center;
+                    color: #3f51b5;
+                    padding-left: 21px;
+                    cursor: pointer;
+                  }
+                  .level{
+                    font-size: 13px;
+                    text-align: center;
+                    margin-top: 10px;
+                    span{
+                      display: inline-block;
+                      margin: 5px 10px;
+                      font-style: normal;
+                      cursor: pointer;
+                      label{
+                        *>{
+                          float: left;
+                        }
+                        input{
+                          margin: 0 3px 0 0;
+                        }
+                      }
+                      &[checked]{
+                        text-decoration: underline;
+                      }
+                    }
+                  }
+                }
+              }
+              .startGame{
+                display: none;
+              }
+            }
+            .toolbar{
+              bottom: 0;
+              display: block;
+              width: 100%;
+              height: 55px;
+              box-sizing: border-box;
+              text-align: center;
+              box-shadow: 0 -6px 4px -4px rgba(0, 0, 0, 0.2);
+              font-size: 13px;
+              border-top: 1px solid #ccc;
+              &>span{
+                display: block;
+                padding: 7px 0;
+              }
+              .miniform{
+                font-size: 12px;
+                font-style: normal;
+                span{
+                  display: inline-block;
+                  cursor: pointer;
+                  &[checked]{
+                    text-decoration: underline;
+                  }
+                  label{
+                    *>{
+                      float: left;
+                    }
+                    input{
+                      margin: 0 3px 0 0;
+                    }
+                  }
+                }
+              }
+            }
+            .blocked{
+              display: none;
+              width: inherit;
+              height: inherit;
+              position: absolute;
+              top: 0px;
+            }
+          }
+          .repeat{
+            display: none;
+          }
+          &.game{
+            .enemy-field{
+              float: right;
+              margin-right: 16px;
+              display: block;
+              .itm:not(.miss):not(.cut):not(.point):not(.ship-h-t):not(.ship-h-b):not(.ship-h):not(.ship-v-t):not(.ship-v-b):not(.ship-v):not(.ship){
+                &:hover{
+                  border: 2px solid #3fb55e;
+                  box-shadow: 0 0 1px;
+                  background: 0;
+                  margin: -1px;
+                  position: relative;
+                  z-index: 1;
+                }
+              }
+              .itm.cut{
+                background: #fff;
+                overflow: hidden;
+                border: 2px solid red!important;
+                margin: -1px;
+                position: relative;
+                z-index: 1;
+              }
+            }
+            .itm {
+              &.ship{
+                .ship(28px,28px);
+                border: 2px solid @color-ship;
+                background: #e6e6e6;
+                &-h {
+                  .h-ship(32px,28px);
+                  &-t{
+                    .h-ship;
+                    border-left: 2px solid @color-ship;
+                    margin-left: -1px;
+                  }
+                  &-b{
+                    .h-ship;
+                    border-right: 2px solid @color-ship;
+                    margin-right: -1px;
+                  }
+                }
+                &-v{
+                  .v-ship(28px,32px);
+                  &-t{
+                    .v-ship;
+                    border-top: 2px solid @color-ship;
+                    margin-top: -1px;
+                  }
+                  &-b{
+                    .v-ship;
+                    border-bottom: 2px solid @color-ship;
+                    margin-bottom: -1px;
+                  }
+                }
+              }
+              &.cut{
+                border-color: red;
+                background: #fff;
+                overflow: hidden;
+                &:before{
+                  content: "";
+                  position: absolute;
+                  z-index: -1;
+                  background: red;
+                  left: 50%;
+                  width: 2px;
+                  top: -25%;
+                  height: 150%;
+                  margin-top: -1px;
+                  .rotate();
+                }
+                &:after{
+                  content: "";
+                  position: absolute;
+                  z-index: -1;
+                  background: red;
+                  top: 50%;
+                  height: 2px;
+                  left: -25%;
+                  width: 150%;
+                  margin-top: -1px;
+                  .rotate();
+                }
+              }
+              &.miss{
+                &:before{
+                  content: "";
+                  display: block!important;
+                  position: absolute;
+                  z-index: -1;
+                  background-color: #636363 !important;
+                  top: 0;
+                  left: 0;
+                  bottom: 0;
+                  right: 0;
+                  margin: auto;
+                  border-radius: 50%;
+                  width: 5px;
+                  height: 5px;
+                }
+              }
+            }
+            .right{
+              display: none!important;
+            }
+          }
+          &.stop{
+            .my-field, .enemy-field{
+              .blur(2px);
+            }
+            .repeat{
+              display: inline-block;
+              float: left;
+              width: 100px;
+              height: 100px;
+              margin: 0 -20px;
+              margin-top: 8px;
+              box-sizing: border-box;
+              text-align: center;
+              font-size: 7em;
+              position: absolute;
+              color: #3f51b5;
+              z-index: 3;
+              cursor: pointer;
+              top: 166px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
