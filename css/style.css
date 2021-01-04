@@ -32,14 +32,9 @@ body .main .body {
   display: inline-block;
 }
 body .main > .center {
+  float: left;
   width: 736px;
-  display: block;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: inline-block;
 }
 body .main > .center .body {
   width: 100%;
